@@ -17,6 +17,19 @@ public class Contact {
 		this.mobileNumber = mobileNumber;
 	}
 
+	public Contact(String[] fields) {
+		this.firstName = fields[0];
+		this.lastName = fields[1];
+		this.mobileNumber = fields[2];
+		this.homeNumber = fields[3];
+		this.email = fields[4];
+		this.street = fields[5];
+		this.streetNumber = fields[6];
+		this.city = fields[7];
+		this.zip = fields[8];
+
+	}
+
 	//getters/setters
 
 	public String getFirstName() {
@@ -93,5 +106,17 @@ public class Contact {
 
 	public String getFullName(){
 		return this.firstName + " " + this.lastName;
+	}
+	public String getFullAddress(){
+		return getStreetNumber() + " " + getStreet();
+	}
+
+	@Override
+	public String toString()
+	{
+		String fullName = getFullName();
+		String fullAddress = getFullAddress();
+		return String.format("%-21s | %-10s | %-10s | %-20s | %-20s | %-15s | %-10s\n", fullName, mobileNumber, homeNumber, email,
+				fullAddress, city, zip);
 	}
 }
