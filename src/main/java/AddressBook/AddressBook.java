@@ -22,6 +22,29 @@ public class AddressBook {
 
 	//Searching
 
+	/**
+	 * Find by firstname
+	 * @param firstName
+	 * @return all contacts that start with bob
+	 */
+	public ArrayList<Contact> searchByFirstName(String firstName)
+	{
+		// List to store matches
+		ArrayList<Contact> matchingContacts = new ArrayList<>();
+
+		// Search the list
+		Iterator<Contact> iterator = contactList.listIterator();
+		while (iterator.hasNext())
+		{
+			Contact next = iterator.next();
+			if (next.getFirstName().trim().equalsIgnoreCase(firstName.trim()))
+			{
+				matchingContacts.add(next);
+				System.out.println("Found "+ firstName);
+			}
+		}
+		return matchingContacts;
+	}
 
 
 //	public void displayContacts(int sortMethod)

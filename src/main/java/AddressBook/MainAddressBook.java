@@ -9,10 +9,11 @@ public class MainAddressBook {
 
 		//System.out.println(list);
 		list.displayContacts();
-		Contact jim = new Contact("Jim", "Ross","555555555");
+		Contact jim = new Contact("bob", "Rosssss","555555555");
 		list.add(jim);
 		list.displayContacts();
-		list.remove(bob);
+		//list.remove(bob);
+		System.out.println(list.searchByFirstName("bob"));
 
 
 
