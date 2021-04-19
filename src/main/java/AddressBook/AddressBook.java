@@ -45,6 +45,23 @@ public class AddressBook {
 		}
 		return matchingContacts;
 	}
+	public ArrayList<Contact> searchByLastName(String lastName)
+	{
+		//Stores match
+		ArrayList<Contact> matchingContacts = new ArrayList<>();
+		//Search
+		Iterator<Contact> i = contactList.listIterator();
+		while (i.hasNext())
+		{
+			Contact next = i.next();
+			if(next.getLastName().trim().equalsIgnoreCase(lastName.trim()))
+			{
+				matchingContacts.add(next);
+				System.out.println("Found " + lastName);
+			}
+		}
+		return matchingContacts;
+	}
 
 
 //	public void displayContacts(int sortMethod)
