@@ -94,4 +94,13 @@ public class Contact {
 	public String getFullName(){
 		return this.firstName + " " + this.lastName;
 	}
+
+	@Override
+	public String toString()
+	{
+		String fullName = getFullName();
+		String fullAddress = streetNumber + " " + streetNumber;
+		return String.format("%-21s | %-10s | %-10s | %-20s | %-20s | %-15s | %-10s\n", fullName, mobileNumber, homeNumber, email,
+				fullAddress, city, zip);
+	}
 }
