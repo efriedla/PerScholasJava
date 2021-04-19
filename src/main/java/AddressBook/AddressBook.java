@@ -11,9 +11,17 @@ public class AddressBook {
 		this.contactList = new ArrayList<>();
 	}
 
+	//add a new contact
 	public void add(Contact contact) {
 		this.contactList.add(contact);
 	}
+	//remove contact
+	public void remove(Contact contact){
+		this.contactList.remove(contact);
+	}
+
+	//Searching
+
 
 
 //	public void displayContacts(int sortMethod)
