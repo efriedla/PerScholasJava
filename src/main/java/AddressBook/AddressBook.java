@@ -1,14 +1,19 @@
 package AddressBook;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class AddressBook {
 	private ArrayList<Contact> contactList;
 
 	public AddressBook(){
 		this.contactList = new ArrayList<>();
+		readData();
 	}
 
 	//add a new contact
@@ -19,6 +24,43 @@ public class AddressBook {
 	public void remove(Contact contact){
 		this.contactList.remove(contact);
 	}
+	//adding CSV
+	private ArrayList<Contact> readData()
+	{
+
+		try
+		{
+			File csvFile = new File("filename.txt");
+			Scanner scanner = new Scanner(csvFile);
+			scanner.nextLine(); // Discard the header row
+
+            /*
+            Read row, split on comma, create new Contact
+            and add to the ArrayList
+             */
+			while (scanner.hasNextLine())
+			{
+				String entry = scanner.nextLine();
+				String[] entryFields = entry.split(",");
+				// If a row is not formed correctly or blank, skip the line
+				if (entryFields.length != 9)
+				{
+					continue;
+				}
+				contactList.add(new Contact(entryFields));
+			}
+			scanner.close();
+		}
+		catch ( FileNotFoundException e)
+		{
+			System.out.println("File not found");
+		}
+
+		// Sort the list alphabetically after loading
+		//contactList.sort(new CompareByFirstThenLastName());
+		return contactList;
+	}
+
 
 	//Searching
 

@@ -6,14 +6,10 @@ public class MainAddressBook {
 		System.out.println(bob.getFullName());
 		AddressBook list = new AddressBook();
 		list.add(bob);
+		list.displayContacts();
+		list.searchByFirstName("mary");
+		
 
-		//System.out.println(list);
-		list.displayContacts();
-		Contact jim = new Contact("Jim", "Ross","555555555");
-		list.add(jim);
-		list.displayContacts();
-		//list.remove(bob);
-		System.out.println(list.searchByLastName("Ross"));
 
 
 

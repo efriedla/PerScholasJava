@@ -17,6 +17,19 @@ public class Contact {
 		this.mobileNumber = mobileNumber;
 	}
 
+	public Contact(String[] fields) {
+		this.firstName = fields[0];
+		this.lastName = fields[1];
+		this.mobileNumber = fields[2];
+		this.homeNumber = fields[3];
+		this.email = fields[4];
+		this.street = fields[5];
+		this.streetNumber = fields[6];
+		this.city = fields[7];
+		this.zip = fields[8];
+
+	}
+
 	//getters/setters
 
 	public String getFirstName() {
