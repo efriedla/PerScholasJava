@@ -90,4 +90,8 @@ public class Contact {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
+
+	public String getFullName(){
+		return this.firstName + " " + this.lastName;
+	}
 }
