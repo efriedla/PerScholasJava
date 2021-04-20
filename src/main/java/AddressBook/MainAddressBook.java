@@ -33,6 +33,31 @@ public class MainAddressBook {
 					System.out.println("Goodbye!");
 					break;
 				}
+				case 'a': //add new contact
+				{
+
+					//Read the user input and store as strings
+					System.out.println("Input First Name: ");
+					String userFirstName = scanner.nextLine();
+					System.out.println("Input Last Name: ");
+					String userLastName = scanner.nextLine();
+					System.out.println("Input Mobile Number: ");
+					String userMobile = scanner.nextLine();
+					//create a new contact using the strings read from the user
+					Contact userContact = new Contact(userFirstName,userLastName,userMobile);
+					list.add(userContact);
+
+					System.out.println(userContact.getFullName() + " added");
+
+					break;
+				}
+				case 'p': //print all contacts
+				{
+
+
+					list.displayContacts(); // Method defined in AddressBook
+					break;
+				}
 				default:
 				{
 					System.out.println("invalid input");
