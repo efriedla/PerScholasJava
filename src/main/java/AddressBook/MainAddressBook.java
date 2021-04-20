@@ -53,11 +53,132 @@ public class MainAddressBook {
 				}
 				case 'p': //print all contacts
 				{
-
-
 					list.displayContacts(); // Method defined in AddressBook
 					break;
 				}
+				case 's': //search for specific contact
+				{
+
+
+					boolean repeat2 = true; //repeats the Search Menu
+					boolean haveContact = false; //switches to true when a contact is found
+					//Create a new contact, MyContact will be set to the described contact when it is found,
+					//so the parameters don't matter
+					Contact MyContact = new Contact("Default","Contact","1112223333");
+
+					while (repeat2)
+					{
+						//present Search Menu Options
+						System.out.println("Search by (P)hone or (N)ame? (B)ack");
+						//Read user input and store as string
+						String userOrder = scanner.nextLine().toLowerCase();
+						if (userOrder.equals(""))userOrder = " "; //handles empty string cornercase
+						//Read first character and store as char for ease of use
+						char orderChar = userOrder.charAt(0);
+						switch (orderChar)
+						{
+							case 'b': //exit
+							{
+								repeat2 = false;//prevents Search Menu from reappearing
+								haveContact = false;//prevents
+								System.out.println("Returning to Main Menu!");
+								break;
+							}
+
+							case 'p':
+							{
+								System.out.println("input Mobile number");
+								String mobileString = scanner.nextLine().toLowerCase();
+								// MyContact = searchByMobile(mobileString);
+								// below is equivalent method from AddressBook class
+								try
+								{
+									//MyContact = list.searchByMobile(mobileString).get(0);
+								}
+								catch (Exception e)
+								{
+									System.out.println("Contact not found");
+									continue;
+								}
+								haveContact = true;
+								break;
+							}
+							case 'n':
+							{
+								System.out.println("input Name");
+								String nameString = scanner.nextLine().toLowerCase();
+								// MyContact = searchByName(nameString);
+								// below is equivalent method from AddressBook class
+								try
+								{
+									MyContact = list.searchByFirstName(nameString).get(0);
+								}
+								catch (Exception e)
+								{
+									System.out.println("Contact not found");
+									continue;
+								}
+								haveContact = true;
+								break;
+							}
+							default:
+							{
+								System.out.println("invalid input");
+								break;
+							}
+						}
+						if(haveContact)
+						{
+
+							boolean repeat3 = true;
+							while (repeat3)
+							{
+								System.out.println("Contact info: ");
+								System.out.println(MyContact.toString()); // Steve wrapped this in a println
+								System.out.println("\n (C)hange - (D)elete - (E)xit");
+
+								String userCDE = scanner.nextLine().toLowerCase();
+								if (userCDE.equals(""))userCDE = " ";
+								char cdeChar = userCDE.charAt(0);
+								switch (cdeChar)
+								{
+
+									case 'e': //exit
+									{
+										repeat3 = false;
+										System.out.println("Goodbye!");
+										break;
+									}
+
+									case 'c': //change
+									{
+										//changeContact(MyContact, scanner);
+										System.out.println("Contact Changed");
+										break;
+									}
+									case 'd': //delete
+									{
+										//deleteContact(MyContact,addressBook);
+										list.remove(MyContact);
+										System.out.println("Contact Deleted");
+										repeat3 = false;
+										break;
+									}
+
+									default:
+									{
+										System.out.println("invalid input");
+										break;
+									}
+								}
+							}
+
+						}
+					}
+
+					break;
+				}
+				// end of search
 				default:
 				{
 					System.out.println("invalid input");
